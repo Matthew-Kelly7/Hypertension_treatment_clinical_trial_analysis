@@ -22,7 +22,7 @@ FROM vitals;
 
 Average cholesterol level:
 SELECT AVG(cholesterol_level) AS avg_cholesterol_level
-FROM vitals:
+FROM vitals;
 
 
 Averages for cholesterol, diastolic and systolic BP by gender and treatment:
@@ -45,7 +45,7 @@ GROUP BY s.gender, s.treatment_group;
 Count comparison for males and females that dropped out:
 SELECT dropout, gender, count(*)
 FROM subjects
-WHERE dropout = "1"
+WHERE dropouts = "1"
 Group BY gender;
 
 
@@ -57,7 +57,7 @@ GROUP BY treatment_group;
 
 
 Find subjects that have high blood pressure:
-SELECT s.subject_id,s.gender, v.systolic_BP, v. disstolic_bp, v.cholesterol_level
+SELECT s.subject_id,s.gender, v.systolic_BP, v. diastolic_BP, v.cholesterol_level
 FROM vitals v
 LEFT JOIN subjects s
 ON s.subject_id = v.subject_id
@@ -66,7 +66,7 @@ AND v.diastolic_BP >= 90;
 
 
 Find subjects that have high blood pressure and also cholesterol:
-SELECT s.subject_id,s.gender, v.systolic_BP, v. disstolic_bp, v.cholesterol_level
+SELECT s.subject_id,s.gender, v.systolic_BP, v. diastolic_BP, v.cholesterol_level
 FROM vitals v
 LEFT JOIN subjects s
 ON s.subject_id = v.subject_id
